@@ -24,6 +24,8 @@ jobs:
       env:
         MOVIES_USERNAME: ${{ secrets.MOVIES_USERNAME }}
         MOVIES_PASSWORD: ${{ secrets.MOVIES_PASSWORD }}
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
