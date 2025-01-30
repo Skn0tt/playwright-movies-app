@@ -19,13 +19,13 @@ jobs:
       run: cd movies-app && npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
     - name: Run Playwright tests
       run: npm run test
       env:
         MOVIES_USERNAME: ${{ secrets.MOVIES_USERNAME }}
         MOVIES_PASSWORD: ${{ secrets.MOVIES_PASSWORD }}
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
